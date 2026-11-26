@@ -1,0 +1,295 @@
+:root {
+  --fg: #1f2328;
+  --muted: #636c76;
+  --card: #ffffff;
+  --accent: #2f6fde;
+  --overlay: rgba(20, 22, 26, 0.72);
+  font-family: system-ui, 'Hiragino Sans', 'Yu Gothic UI', 'Meiryo', sans-serif;
+  color: var(--fg);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  height: 100%;
+  overflow: hidden;
+  background: #e9e4da;
+}
+
+#scene {
+  display: block;
+  width: 100vw;
+  height: 100vh;
+  touch-action: none;
+}
+
+#hud {
+  position: fixed;
+  top: 12px;
+  left: 12px;
+  padding: 8px 12px;
+  background: var(--overlay);
+  color: #fff;
+  border-radius: 8px;
+  font: 13px/1.5 ui-monospace, 'Cascadia Mono', Consolas, monospace;
+  white-space: pre;
+  pointer-events: none;
+}
+
+#target-label {
+  position: fixed;
+  top: 16px;
+  right: 20px;
+  padding: 2px 8px;
+  background: var(--overlay);
+  color: #fff;
+  border-radius: 4px;
+  font-size: 12px;
+  pointer-events: none;
+  z-index: 1;
+}
+
+#preview {
+  position: fixed;
+  right: 12px;
+  bottom: 12px;
+  width: 240px;
+  height: 180px;
+  border-radius: 8px;
+  background: #000;
+  display: none;
+  pointer-events: none;
+}
+
+#help {
+  position: fixed;
+  left: 12px;
+  bottom: 12px;
+  padding: 6px 10px;
+  background: var(--overlay);
+  color: #fff;
+  border-radius: 6px;
+  font-size: 12px;
+  pointer-events: none;
+}
+
+.panel {
+  position: fixed;
+  top: 120px;
+  left: 12px;
+  width: 300px;
+  max-height: calc(100vh - 180px);
+  overflow: auto;
+  padding: 12px;
+  background: var(--card);
+  border-radius: 10px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.18);
+  font-size: 13px;
+}
+
+.panel h3 {
+  margin: 0 0 8px;
+  font-size: 14px;
+}
+
+.panel label {
+  display: grid;
+  grid-template-columns: 1fr 52px;
+  gap: 2px 8px;
+  margin-bottom: 6px;
+}
+
+.panel input[type='range'] {
+  grid-column: 1 / -1;
+  width: 100%;
+}
+
+.panel output {
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+}
+
+#tuning-live {
+  margin: 8px 0;
+  color: var(--muted);
+  font-family: ui-monospace, Consolas, monospace;
+}
+
+.modal {
+  position: fixed;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  background: rgba(20, 22, 26, 0.45);
+  padding: 16px;
+}
+
+.modal[hidden],
+.panel[hidden] {
+  display: none;
+}
+
+.card {
+  width: min(460px, 100%);
+  max-height: calc(100vh - 32px);
+  overflow: auto;
+  background: var(--card);
+  border-radius: 14px;
+  padding: 20px 22px;
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.25);
+  display: grid;
+  gap: 12px;
+}
+
+.card h2 {
+  margin: 0;
+  font-size: 20px;
+}
+
+.card label {
+  display: block;
+}
+
+.card input[type='text'],
+.card input:not([type]) {
+  width: 100%;
+  margin-top: 4px;
+  padding: 8px 10px;
+  font-size: 15px;
+  border: 1px solid #c9cfd6;
+  border-radius: 8px;
+}
+
+fieldset {
+  border: 1px solid #dde2e7;
+  border-radius: 8px;
+  padding: 8px 12px;
+  margin: 0;
+}
+
+legend {
+  font-size: 13px;
+  color: var(--muted);
+}
+
+details {
+  font-size: 13px;
+  color: var(--muted);
+}
+
+details ul {
+  margin: 6px 0 0;
+  padding-left: 18px;
+}
+
+button {
+  padding: 10px 14px;
+  font-size: 15px;
+  border: none;
+  border-radius: 8px;
+  background: var(--accent);
+  color: #fff;
+  cursor: pointer;
+}
+
+button:disabled {
+  background: #aab4c0;
+  cursor: default;
+}
+
+.row {
+  display: flex;
+  gap: 8px;
+}
+
+.row button {
+  flex: 1;
+  background: #3b4450;
+}
+
+.row button:disabled {
+  background: #aab4c0;
+}
+
+.muted {
+  margin: 0;
+  color: var(--muted);
+}
+
+.status {
+  margin: 0;
+  min-height: 1.4em;
+  font-size: 13px;
+  color: #b42318;
+}
+
+.status.ok {
+  color: var(--muted);
+}
+
+.phone-panel {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+}
+
+.phone-panel[hidden] {
+  display: none;
+}
+
+.phone-panel img {
+  flex: none;
+  border-radius: 6px;
+  background: #f4f6f8;
+}
+
+.phone-panel > div {
+  display: grid;
+  gap: 8px;
+  min-width: 0;
+}
+
+.phone-panel select {
+  width: 100%;
+  padding: 6px;
+  font-size: 13px;
+}
+
+.badge {
+  margin: 0;
+  justify-self: start;
+  padding: 3px 10px;
+  border-radius: 999px;
+  background: #eef0f3;
+  color: var(--muted);
+  font-size: 13px;
+}
+
+.badge.ok {
+  background: #dff5e6;
+  color: #1f6b3a;
+}
+
+.scale {
+  display: flex;
+  justify-content: space-between;
+}
+
+.scale label {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-size: 13px;
+}
+
+.summary {
+  font: 13px/1.6 ui-monospace, Consolas, monospace;
+  background: #f4f6f8;
+  border-radius: 8px;
+  padding: 8px 10px;
+  white-space: pre-wrap;
+}

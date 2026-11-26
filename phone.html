@@ -1,0 +1,28 @@
+<!doctype html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
+    <meta name="theme-color" content="#15171a" />
+    <title>電子レゴ コントローラー</title>
+  </head>
+  <body>
+    <main id="app">
+      <header>
+        <span id="conn" class="badge">接続中…</span>
+        <span id="sensor" class="badge warn" hidden></span>
+      </header>
+      <button id="calib" type="button">中央に合わせる</button>
+      <div id="pad" role="button" aria-label="押している間掴む">押している間<br />掴む</div>
+      <div class="rot">
+        <button id="rot-l" type="button" aria-label="左に回す">↺</button>
+        <button id="rot-r" type="button" aria-label="右に回す">↻</button>
+      </div>
+    </main>
+    <div id="intro">
+      <p>スマホの<strong>上端を画面に向けて</strong>、画面を上にして持ってください。<br />フォークのように、向けた先のパーツを掴みます。</p>
+      <button id="begin" type="button">はじめる</button>
+    </div>
+    <script type="module" src="/src/phone/main.ts"></script>
+  </body>
+</html>
